@@ -23,6 +23,8 @@ Please note this SDK is not currently developed or supported in anyway by **myPO
 
 
 ```javascript
+const _host = require('./greenlock.d/config').sites[0].subject;
+
 const  myPOS = require('mypos-js');
 var  _myPOS = new  myPOS(false, {
 	// keyIndex: 1,
@@ -102,10 +104,10 @@ var  html = await  _myPOS.Purchase(_customer, _cart, {
 
 ```javascript
 const  IPC_Trnref = await  _myPOS.IAPurchase({
-	orderId:  _card,
+	orderId:  'TEST_ORDER_' + new Date().getTime()
 	currency:  'EUR',
 	note:  ''  // Optional
-	}, storedCard, _cart);
+	}, _card, _cart);
 ```
 
 ## Check out all the examples. Spot any issue? I am happy to accept any PR. Happy codding ✌️
