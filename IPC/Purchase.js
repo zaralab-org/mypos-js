@@ -56,7 +56,7 @@ module.exports = function (config, urls, customer, cart, order, params) {
     _purchase.CustomerAddress = customer.address;
   }
 
-  if (!helper.isCardTokenRequestOnly()) {
+  if (!helper.isCardTokenRequestOnly(params.cardTokenRequest)) {
 
     _purchase[`CartItems`] = cart.getItemsCount();
     _purchase[`Amount`] = cart.getTotal();
