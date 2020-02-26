@@ -1,0 +1,21 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "sample project with examples of how to use the exposed apis of the sdk",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "author": "fakedob",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "flat": "^5.0.0",
+    "greenlock-express": "^4.0.3",
+    "he": "^1.2.0",
+    "morgan": "^1.9.1"
+  }
+}

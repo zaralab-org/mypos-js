@@ -1,0 +1,6 @@
+{
+  "defaults": {},
+  "sites": [{
+    "subject": "your.dev.server.com"
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "mypos-js",
+  "version": "1.0.0",
+  "description": "myPOS Checkout SDK for the JS programming language",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaralab-org/mypos-js"
+  },
+  "author": "fakedob",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaralab-org/mypos-js/issues"
+  },
+  "homepage": "https://github.com/zaralab-org/mypos-js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "credit-card-type": "^8.3.0",
+    "flat": "^5.0.0",
+    "he": "^1.2.0",
+    "transliteration": "^2.1.8"
+  }
+}
