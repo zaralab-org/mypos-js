@@ -391,7 +391,7 @@ module.exports = (() => {
 
     var _concData = Buffer.from(payload).toString('base64');
 
-    var key = config.encryptPublicKey.trim();
+    var key = config.encryptPublicKey.trim().split('\n').map(x => x.trim()).join('\n');
     var verifier = crypto.createVerify('SHA256');
     verifier.update(_concData);
     try{
@@ -412,7 +412,7 @@ module.exports = (() => {
    */
 
   this.encryptData = (config, data) => {
-    var key = config.encryptPublicKey.trim();
+    var key = config.encryptPublicKey.trim().split('\n').map(x => x.trim()).join('\n');
 
     return crypto.publicEncrypt({
       key,
@@ -427,7 +427,7 @@ module.exports = (() => {
    */
 
   this.createSignature = (config, props) => {
-    const key = config.privateKey.trim();
+    const key = config.privateKey.trim().split('\n').map(x => x.trim()).join('\n');
 
     var _params = {};
     for (var a in props) {
