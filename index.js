@@ -71,7 +71,7 @@ function myPOS(production = false, config = {}, urls = {}, params = {}) {
   this.Cart = cart;
   this.Customer = new customer(params.purchaseType);
 
-  this.Purchase = async function (customer, cart, order, customParams) {
+  this.Purchase = async function (customer, cart, order, justForm, customParams) {
     var _params = Object.assign({}, params, customParams);
 
     var _props = purchase(config,
@@ -82,10 +82,10 @@ function myPOS(production = false, config = {}, urls = {}, params = {}) {
       _params
     );
 
-    return await helper.generateHtmlPostBody(config, _props);
+    return await helper.generateHtmlPostBody(config, justForm, _props);
   }
 
-  this.PurchaseByIcard = async function (customer, cart, order) {
+  this.PurchaseByIcard = async function (customer, cart, order, justForm) {
 
     var _props = purchaseByIcard(urls,
       config,
@@ -94,7 +94,7 @@ function myPOS(production = false, config = {}, urls = {}, params = {}) {
       order
     );
 
-    return await helper.generateHtmlPostBody(config, _props);
+    return await helper.generateHtmlPostBody(config, justForm, _props);
   }
 
   this.Refund = async function (order, amount, trnref, customParams) {

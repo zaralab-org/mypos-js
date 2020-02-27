@@ -448,17 +448,20 @@ module.exports = (() => {
     return sign.sign(key, 'base64');
   }
 
-  this.generateHtmlPostBody = async (config, props) => {
+  this.generateHtmlPostBody = async (config, justForm = false, props) => {
     props['Signature'] = this.createSignature(config, props);
+    const _form = `<form id="ipcForm" name="ipcForm" action="${config.ipcApiUrl}" method="post">
+        ${Object.getOwnPropertyNames(props).map(x => {
+          return `        <input type="hidden" name="${x}" value="${props[x]}" />`;
+        }).join('\n')}
+</form>`
+        if(justForm)
+          return _form;
 
     return `<html>
     <head><title>Please wait...</title></head>
     <body onload="document.getElementById('ipcForm').submit()">
-      <form id="ipcForm" name="ipcForm" action="${config.ipcApiUrl}" method="post">
-${Object.getOwnPropertyNames(props).map(x => {
-      return `        <input type="hidden" name="${x}" value="${props[x]}" />`;
-    }).join('\n')}
-      </form>
+      ${_form}
     </body>
   </html>`;
   }
