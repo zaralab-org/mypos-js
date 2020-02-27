@@ -394,7 +394,13 @@ module.exports = (() => {
     var key = config.encryptPublicKey.trim();
     var verifier = crypto.createVerify('SHA256');
     verifier.update(_concData);
-    return verifier.verify(key, signature, 'base64');
+    try{
+      verifier.verify(key, signature, 'base64');
+      return true;
+    }
+    catch(e){
+      return false;
+    }
   }
 
   /**
