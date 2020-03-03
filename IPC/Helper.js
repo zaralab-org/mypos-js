@@ -164,7 +164,7 @@ module.exports = (() => {
     }
     //myPOS returns 1 always even if succes so:
     else if (statusObj.Status > 1 || statusObj.StatusMsg != 'Success') {
-      throw new Error(`Invalid status response: ${statusObj.StatusMsg}`);
+      throw new ipc_exception(`Invalid status response: ${statusObj.StatusMsg}`);
     }
     return true
   }
@@ -403,6 +403,15 @@ module.exports = (() => {
     }
   }
 
+  this.decodeHexStringToByteArray = function (hexString) {
+    var result = [];
+    while (hexString.length >= 2) { 
+        result.push(parseInt(hexString.substring(0, 2), 16));
+        hexString = hexString.substring(2, hexString.length);
+    }
+    return Buffer.from(result);
+  }
+
   /**
    * Create signature of API Request params against the SID private key
    *
@@ -470,7 +479,7 @@ module.exports = (() => {
    * Send POST Request to API and returns Response object with validated response data
    *
    * @return Response
-   * @throws Error
+   * @throws ipc_exception
    */
 
   this.doPostRequest = async (config, props, headers = {}) => {

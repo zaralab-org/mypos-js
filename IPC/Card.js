@@ -20,9 +20,6 @@ module.exports = function(config) {
     if(card.lastName)
       card.lastName = tr.transliterate(card.lastName);
 
-    if(card.token)
-      card.token = helper.encryptData(config, card.token);
-
     if(card.number)
       card.number = helper.encryptData(config, card.number);
 
